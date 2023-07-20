@@ -18,6 +18,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.nourelden515.gonutswithdonuts.R
+import com.nourelden515.gonutswithdonuts.ui.main.LocalNavigationProvider
+import com.nourelden515.gonutswithdonuts.ui.screens.home.navigateToHome
 import com.nourelden515.gonutswithdonuts.ui.theme.Primary60
 import com.nourelden515.gonutswithdonuts.ui.theme.Primary80
 import com.nourelden515.gonutswithdonuts.ui.theme.Typography
@@ -25,11 +27,18 @@ import com.nourelden515.gonutswithdonuts.ui.theme.White
 
 @Composable
 fun OnBoardingScreen() {
-    OnBoardingContent()
+    val navController = LocalNavigationProvider.current
+    OnBoardingContent(
+        onClickGetStarted = {
+            navController.navigateToHome()
+        }
+    )
 }
 
 @Composable
-fun OnBoardingContent() {
+fun OnBoardingContent(
+    onClickGetStarted: () -> Unit,
+) {
     Box(
         Modifier
             .fillMaxSize()
@@ -60,7 +69,7 @@ fun OnBoardingContent() {
             Button(
                 modifier = Modifier
                     .fillMaxWidth(),
-                onClick = {},
+                onClick = { onClickGetStarted() },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = White
                 )
@@ -68,7 +77,7 @@ fun OnBoardingContent() {
                 Text(
                     modifier = Modifier
                         .padding(vertical = 12.dp),
-                    text = "Get Started",
+                    text = stringResource(R.string.get_started),
                     style = Typography.titleSmall,
                 )
             }
@@ -79,5 +88,5 @@ fun OnBoardingContent() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewOnBoarding() {
-    OnBoardingContent()
+    OnBoardingContent {}
 }
