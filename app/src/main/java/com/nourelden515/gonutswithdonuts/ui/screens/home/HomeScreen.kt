@@ -38,7 +38,7 @@ fun HomeScreen(
     val state = viewModel.state.collectAsState()
     HomeContent(
         onClickDonut = {
-            navController.navigateToDetails()
+            navController.navigateToDetails(it)
         },
         state = state
     )
@@ -47,7 +47,7 @@ fun HomeScreen(
 @Composable
 fun HomeContent(
     state: State<HomeUiState>,
-    onClickDonut: () -> Unit,
+    onClickDonut: (String) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -79,7 +79,7 @@ fun HomeContent(
                 OfferItem(
                     modifier = Modifier
                         .padding(16.dp)
-                        .clickable { onClickDonut() },
+                        .clickable { onClickDonut(offer.title) },
                     offer = offer
                 )
             }
@@ -103,7 +103,7 @@ fun HomeContent(
                     donut = donut,
                     modifier = Modifier
                         .padding(top = 42.dp)
-                        .clickable { onClickDonut() }
+                        .clickable { onClickDonut(donut.title) }
                 )
             }
         }

@@ -8,4 +8,7 @@
     <string name="order_your_favourite_donuts_from_here">Order your favourite donuts from here</string>
     <string name="today_offers">Today Offers</string>
     <string name="donuts">Donuts</string>
+    <string name="about_gonut">About Gonut</string>
+    <string name="quantity">Quantity</string>
+    <string name="add_to_cart">Add To Cart</string>
 </resources>
